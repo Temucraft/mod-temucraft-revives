@@ -1,0 +1,80 @@
+[worldserver]
+
+########################################
+# mod-temucraft-revives
+########################################
+#
+#    Temucraft.Revives.Enable
+#        Description: Revives for every class, First Aid, healer and tank specs, and warlocks; battle res charges.
+#        Default:     1
+#
+#    Temucraft.Revives.Revive (.CastSeconds, .Health, .Mana)
+#        Description: Every class learns Resurrection (145728): out of combat, a slow cast, health and mana in %.
+#        Default:     1 (60 sec cast, 20% health, 10% mana)
+#
+#    Temucraft.Revives.FirstAid (.MinSkill, .CastSeconds, .Steps)
+#        Description: First Aid from MinSkill teaches Resuscitate (115178), out of combat. Steps "skill:health:mana":
+#                     the revive grows with the First Aid skill.
+#        Default:     1 (skill 150, 30 sec, "150:15:8 225:20:10 300:25:12 375:30:15 450:35:18")
+#
+#    Temucraft.Revives.Mass (.CastSeconds, .Health, .Mana, .Radius)
+#        Description: Healer specs learn a mass revive (Prayer of Elune, 25841): dead players within Radius yards,
+#                     out of combat.
+#        Default:     1 (10 sec, 20% health, 10% mana, 30 yards)
+#
+#    Temucraft.Revives.Combat (.Health, .Mana, .CooldownSeconds)
+#        Description: Tank and healer specs learn a combat revive (Revive, 51918, 2 sec cast, 40 yards).
+#        Default:     1 (30% health, 20% mana, 10 min cooldown)
+#
+#    Temucraft.Revives.Soulstone (.Health, .Mana, .CooldownSeconds, .ManaCost)
+#        Description: Warlocks learn a soulstone revive (Revive, 24341, instant, 40 yards) costing ManaCost % of their
+#                     maximum mana. In combat it uses a battle res charge.
+#        Default:     1 (30% health, 20% mana, 30 sec cooldown, 40% mana)
+#
+#    Temucraft.Revives.TankSpecs / HealerSpecs
+#        Description: "class:tree" pairs (tree 0, 1, 2 = the talent tab with the most points). Tanks: protection
+#                     warrior and paladin, feral druid, every death knight tree, and the tank reworks (demonology
+#                     warlock, enhancement shaman, survival hunter, combat rogue). Healers: discipline and holy priest,
+#                     holy paladin, restoration shaman and druid.
+#        Default:     "1:2 2:1 11:1 6:0 6:1 6:2 9:1 7:1 3:2 4:1" / "5:0 5:1 2:0 7:2 11:2"
+#
+#    Temucraft.Revives.BattleRes
+#        Description: Combat revives in dungeons and raids (and the soulstone revive cast in combat) share the
+#                     instance's charges. Each instance type: Start charges when it begins, then Charges more every
+#                     Minutes minutes, at most Max (0 = no cap). Raid, Dungeon and Other (any other instance) fall back
+#                     to Base for anything not set. Per-map overrides: table mod_temucraft_battle_res (world).
+#                     .battleres shows the charges. Outside instances only the spells' cooldowns apply.
+#        Default:     1; Base 1 start, 1 every 10 min; Raid 3 start, 1 every 10 min; Dungeon 1 start, 1 every 15 min
+
+Temucraft.Revives.Enable = 1
+Temucraft.Revives.Revive = 1
+Temucraft.Revives.Revive.CastSeconds = 60
+Temucraft.Revives.Revive.Health = 20
+Temucraft.Revives.Revive.Mana = 10
+Temucraft.Revives.FirstAid = 1
+Temucraft.Revives.FirstAid.MinSkill = 150
+Temucraft.Revives.FirstAid.CastSeconds = 30
+Temucraft.Revives.FirstAid.Steps = "150:15:8 225:20:10 300:25:12 375:30:15 450:35:18"
+Temucraft.Revives.Mass = 1
+Temucraft.Revives.Mass.CastSeconds = 10
+Temucraft.Revives.Mass.Health = 20
+Temucraft.Revives.Mass.Mana = 10
+Temucraft.Revives.Mass.Radius = 30
+Temucraft.Revives.Combat = 1
+Temucraft.Revives.Combat.Health = 30
+Temucraft.Revives.Combat.Mana = 20
+Temucraft.Revives.Combat.CooldownSeconds = 600
+Temucraft.Revives.Soulstone = 1
+Temucraft.Revives.Soulstone.Health = 30
+Temucraft.Revives.Soulstone.Mana = 20
+Temucraft.Revives.Soulstone.CooldownSeconds = 30
+Temucraft.Revives.Soulstone.ManaCost = 40
+Temucraft.Revives.TankSpecs = "1:2 2:1 11:1 6:0 6:1 6:2 9:1 7:1 3:2 4:1"
+Temucraft.Revives.HealerSpecs = "5:0 5:1 2:0 7:2 11:2"
+Temucraft.Revives.BattleRes = 1
+Temucraft.Revives.BattleRes.Base.Start = 1
+Temucraft.Revives.BattleRes.Base.Charges = 1
+Temucraft.Revives.BattleRes.Base.Minutes = 10
+Temucraft.Revives.BattleRes.Base.Max = 0
+Temucraft.Revives.BattleRes.Raid.Start = 3
+Temucraft.Revives.BattleRes.Dungeon.Minutes = 15
