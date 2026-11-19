@@ -20,7 +20,7 @@ most points; the spells come and go with talent changes and dual spec. Revives o
 
 In dungeons and raids, every combat revive (and the soulstone revive cast in combat) uses one of the instance's
 charges. An instance starts with some and gains more over time: raids 3, then 1 every 10 minutes; dungeons 1, then 1
-every 15 minutes; any other instance (delves, scenarios) the base rule, 1 then 1 every 10 minutes. Each type has a
+every 15 minutes; any other instance (expeditions, scenarios) the base rule, 1 then 1 every 10 minutes. Each type has a
 start count, a regeneration (N charges every M minutes) and an optional cap, falling back to the base rule. Per-map
 rules go in `mod_temucraft_battle_res` (world database). The group sees how many are left when one is used;
 `.battleres` shows them. Outside instances only the spells' cooldowns count.
@@ -35,3 +35,5 @@ Prayer of Elune and the Revives keep their names.
 
 Copy the module into `modules/`, re-run CMake and build. The world SQL adds the per-map table, the spell scripts and
 the texts.
+
+Part of the Temucraft modules for AzerothCore 3.3.5a.
