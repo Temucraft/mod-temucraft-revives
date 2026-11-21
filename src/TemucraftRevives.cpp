@@ -503,7 +503,7 @@ public:
 
     ChatCommandTable GetCommands() const override
     {
-        static ChatCommandTable table = { { "battleres", HandleBattleRes, SEC_PLAYER, Console::No } };
+        static ChatCommandTable table = { { "temucraft battleres", HandleBattleRes, 103050, Console::No } };
         return table;
     }
 

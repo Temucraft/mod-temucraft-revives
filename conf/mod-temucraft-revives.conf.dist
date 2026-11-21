@@ -43,7 +43,7 @@
 #                     instance's charges. Each instance type: Start charges when it begins, then Charges more every
 #                     Minutes minutes, at most Max (0 = no cap). Raid, Dungeon and Other (any other instance) fall back
 #                     to Base for anything not set. Per-map overrides: table mod_temucraft_battle_res (world).
-#                     .battleres shows the charges. Outside instances only the spells' cooldowns apply.
+#                     .temucraft battleres shows the charges. Outside instances only the spells' cooldowns apply.
 #        Default:     1; Base 1 start, 1 every 10 min; Raid 3 start, 1 every 10 min; Dungeon 1 start, 1 every 15 min
 
 Temucraft.Revives.Enable = 1

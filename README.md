@@ -23,7 +23,7 @@ charges. An instance starts with some and gains more over time: raids 3, then 1 
 every 15 minutes; any other instance (expeditions, scenarios) the base rule, 1 then 1 every 10 minutes. Each type has a
 start count, a regeneration (N charges every M minutes) and an optional cap, falling back to the base rule. Per-map
 rules go in `mod_temucraft_battle_res` (world database). The group sees how many are left when one is used;
-`.battleres` shows them. Outside instances only the spells' cooldowns count.
+`.temucraft battleres` shows them. Outside instances only the spells' cooldowns count.
 
 ## Notes
 
