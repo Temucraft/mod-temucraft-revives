@@ -67,6 +67,7 @@ namespace
         bool mass = true; uint32 massCast = 10; float massHealth = 20, massMana = 10; uint32 massRadius = 30;
         bool combat = true; float combatHealth = 30, combatMana = 20; uint32 combatCooldown = 600;
         bool soulstone = true; float soulstoneHealth = 30, soulstoneMana = 20; uint32 soulstoneCooldown = 30; float soulstoneCost = 40;
+        float firstAidLowHealth = 10, firstAidLowMana = 5; float combatRange = 40.0f;
         std::unordered_set<uint32> tankSpecs, healerSpecs;   // class * 10 + talent tab page
         bool pool = true;
         PoolRule base, raid, dungeon, other;
@@ -130,6 +131,8 @@ namespace
         settings.firstAid = b("FirstAid", true);
         settings.firstAidSkill = u("FirstAid.MinSkill", 150);
         settings.firstAidCast = u("FirstAid.CastSeconds", 30);
+        settings.firstAidLowHealth = f("FirstAid.Health", 10); settings.firstAidLowMana = f("FirstAid.Mana", 5);
+        settings.combatRange = f("Combat.Range", 40.0f);
         settings.firstAidSteps = ParseSteps(sConfigMgr->GetOption<std::string>("Temucraft.Revives.FirstAid.Steps", "150:15:8 225:20:10 300:25:12 375:30:15 450:35:18"));
         settings.mass = b("Mass", true);
         settings.massCast = u("Mass.CastSeconds", 10);
@@ -253,7 +256,7 @@ namespace
             case SPELL_SOULSTONE: health = settings.soulstoneHealth; mana = settings.soulstoneMana; break;
             case SPELL_FIRST_AID:
             {
-                health = 10; mana = 5;
+                health = settings.firstAidLowHealth; mana = settings.firstAidLowMana;
                 uint32 const skill = caster->GetSkillValue(SKILL_FIRST_AID_ID);
                 for (auto const& [from, h, m] : settings.firstAidSteps)
                     if (skill >= from)
@@ -376,7 +379,7 @@ class spell_temucraft_revive : public SpellScript
             if (!target->IsPlayer())
                 return SPELL_FAILED_BAD_TARGETS;
             // the client allows 100 yards for these two; players revive from 40
-            if ((id == SPELL_COMBAT || id == SPELL_SOULSTONE) && !caster->IsWithinDistInMap(target, 40.0f))
+            if ((id == SPELL_COMBAT || id == SPELL_SOULSTONE) && !caster->IsWithinDistInMap(target, settings.combatRange))
                 return SPELL_FAILED_OUT_OF_RANGE;
         }
         if (id == SPELL_SOULSTONE)

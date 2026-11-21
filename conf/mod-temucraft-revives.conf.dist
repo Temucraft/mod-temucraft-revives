@@ -78,3 +78,24 @@ Temucraft.Revives.BattleRes.Base.Minutes = 10
 Temucraft.Revives.BattleRes.Base.Max = 0
 Temucraft.Revives.BattleRes.Raid.Start = 3
 Temucraft.Revives.BattleRes.Dungeon.Minutes = 15
+
+#
+#    Temucraft.Revives.FirstAid.Health
+#        Description: Resuscitate: health percent below the first FirstAid.Steps skill.
+#        Default:     10
+
+Temucraft.Revives.FirstAid.Health = 10
+
+#
+#    Temucraft.Revives.FirstAid.Mana
+#        Description: Resuscitate: mana percent below the first FirstAid.Steps skill.
+#        Default:     5
+
+Temucraft.Revives.FirstAid.Mana = 5
+
+#
+#    Temucraft.Revives.Combat.Range
+#        Description: Yards for the combat revive and the soulstone revive.
+#        Default:     40
+
+Temucraft.Revives.Combat.Range = 40
