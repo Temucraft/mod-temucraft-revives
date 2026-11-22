@@ -277,7 +277,9 @@ namespace
             return;
         auto want = [p](uint32 spell, bool yes)
         {
-            if (yes && !p->HasSpell(spell))
+            // a spell missing from the server's Spell.dbc / spell_dbc can't be learned: trying again every update floods
+            // the character database with cleanup deletes (and stalls logins)
+            if (yes && !p->HasSpell(spell) && sSpellMgr->GetSpellInfo(spell))
                 p->learnSpell(spell);
             else if (!yes && p->HasSpell(spell))
                 p->removeSpell(spell, SPEC_MASK_ALL, false);
