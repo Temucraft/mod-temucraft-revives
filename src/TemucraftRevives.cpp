@@ -15,6 +15,7 @@
 //   charge when the warlock is in combat.
 // Spells the 3.3.5 client already has are used (their client tooltips may not match the values set here).
 
+#include "TemucraftLocked.h"
 #include "Chat.h"
 #include "CommandScript.h"
 #include "Config.h"
@@ -76,7 +77,7 @@ namespace
     std::unordered_map<uint32, PoolRule> mapRules;   // per map overrides
 
     struct Pool { uint32 charges = 0; time_t last = 0; bool started = false; };
-    std::unordered_map<uint32, Pool> pools;          // instance id -> charges
+    Temucraft::LockedMap<uint32, Pool> pools;          // instance id -> charges
 
     // "150:15:8 300:25:12" style lists
     std::vector<std::tuple<uint32, float, float>> ParseSteps(std::string text)
@@ -495,7 +496,7 @@ public:
     }
 
 private:
-    std::unordered_map<uint32, uint32> timers;
+    Temucraft::LockedMap<uint32, uint32> timers;
 };
 
 class TemucraftRevivesCommands : public CommandScript
