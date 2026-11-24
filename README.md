@@ -31,6 +31,10 @@ The spells are ones the 3.3.5 client already has (Resurrection 145728, Resuscita
 Revive 51918 and 24341), so their client tooltips show their own numbers; the values above are what the server uses.
 Prayer of Elune and the Revives keep their names.
 
+The client's cast times are matched in the Temucraft release (patch-T's Spell.dbc, 2026-11-24): Resurrection 60 sec,
+Resuscitate 30 sec, Prayer of Elune 10 sec. `tools/client_cast_times.py <Spell.dbc> <SpellCastTimes.dbc>` sets them
+again (for example after patch-T's Spell.dbc is replaced); pass your seconds if you changed `CastSeconds` in the config.
+
 ## Install
 
 Copy the module into `modules/`, re-run CMake and build. The world SQL adds the per-map table, the spell scripts and
