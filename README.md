@@ -35,6 +35,12 @@ The client's cast times are matched in the Temucraft release (patch-T's Spell.db
 Resuscitate 30 sec, Prayer of Elune 10 sec. `tools/client_cast_times.py <Spell.dbc> <SpellCastTimes.dbc>` sets them
 again (for example after patch-T's Spell.dbc is replaced); pass your seconds if you changed `CastSeconds` in the config.
 
+The combat revive (51918) is the death knight's Revive: its stock tooltip said "Resurrects a fallen death knight." and
+it showed for every tank and healer spec (Combat rogues too) in the General tab. `tools/client_revive_texts.py
+<Spell.dbc>` gives it and the soulstone revive (24341, no stock text) their Temucraft tooltips: what they bring back,
+battle resurrection charges, 40 yards and their cooldowns (PTR patch-T first, 2026-11-26); pass your numbers if you
+changed `Combat.*` or `Soulstone.*` in the config.
+
 ## Install
 
 Copy the module into `modules/`, re-run CMake and build. The world SQL adds the per-map table, the spell scripts and
